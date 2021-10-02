@@ -2,7 +2,8 @@ package com.bridgelabz;
 
 /**
  * 
- * // Calculating Wages For a Month
+ * // Calculate Wages till a condition of total working hours or days is reached
+ * for a month
  *
  */
 public class Emp_Wage {
@@ -12,11 +13,13 @@ public class Emp_Wage {
 		final int IS_FULL_TIME = 2;
 		final int EMP_RATE_PER_HOUR = 20;
 		final int NUM_OF_WORKING_DAYS = 20;
+		final int MAX_HRS_IN_MONTH = 100;
 
 		// initializing variable
-		int empHrs = 0, empWage = 0, totalEmpWage = 0;
+		int empHrs = 0, totalEmpWage = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 		// computation
-		for (int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+		while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+			totalWorkingDays++;
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 			switch (empCheck) {
 			case IS_PART_TIME:
@@ -28,11 +31,16 @@ public class Emp_Wage {
 			default:
 				empHrs = 0;
 			}
-			empWage = empHrs * EMP_RATE_PER_HOUR;
-			System.out.println("Emp Wage: " + empWage);
-			totalEmpWage += empWage;
+			totalEmpHrs += empHrs;
+			System.out.println(" Day: " + totalWorkingDays);
+			System.out.println(" Dailly Employee Hour: " + empHrs);
+			System.out.println(" Total Employee hour: " + totalEmpHrs);
+			System.out.println(" ");
+
 		}
-		System.out.println("Total Emp Wage: " + totalEmpWage);
+		totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+		System.out.println(" Calculate Employee Wages For a Month: " + totalEmpWage);
+
 	}
 
 }
